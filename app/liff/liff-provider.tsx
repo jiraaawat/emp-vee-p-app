@@ -42,17 +42,20 @@ export function LiffProvider({ children }: { children: React.ReactNode }) {
           return;
         }
 
-        await liff.init({ liffId });
+        await liff.init({ liffId, withLoginOnExternalBrowser: true });
 
         if (!mounted) return;
 
         setLiff(liff);
 
-        if (liff.isLoggedIn()) {
-          const profile = await liff.getProfile();
-          setProfile(profile);
+        if (!liff.isLoggedIn()) {
+          // Redirect to LINE login and come back with a profile.
+          liff.login({ redirectUri: typeof window !== "undefined" ? window.location.href : undefined });
+          return;
         }
 
+        const profile = await liff.getProfile();
+        setProfile(profile);
         setReady(true);
       } catch (err) {
         console.error("LIFF init error:", err);
