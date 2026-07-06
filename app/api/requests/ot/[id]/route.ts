@@ -1,0 +1,48 @@
+import { NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/db";
+import { otRequests, employees } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
+import { serializeOtRequest } from "@/lib/db/serializers";
+import { notifyApproval } from "@/lib/notifications";
+
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    const { status } = await request.json();
+
+    if (!status || !["approved", "rejected"].includes(status)) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    }
+
+    const [updated] = await db
+      .update(otRequests)
+      .set({ status })
+      .where(eq(otRequests.id, id))
+      .returning();
+
+    if (!updated) {
+      return NextResponse.json({ error: "OT request not found" }, { status: 404 });
+    }
+
+    const employee = await db.query.employees.findFirst({
+      where: eq(employees.id, updated.employeeId),
+    });
+
+    if (employee?.lineUserId && status !== "pending") {
+      await notifyApproval(
+        employee.lineUserId,
+        "OT",
+        status,
+        `${updated.otDate} ${updated.startTime}-${updated.endTime}`
+      );
+    }
+
+    return NextResponse.json(serializeOtRequest(updated));
+  } catch (error) {
+    console.error("PATCH /api/requests/ot/[id] error:", error);
+    return NextResponse.json({ error: "Failed to update OT request" }, { status: 500 });
+  }
+}

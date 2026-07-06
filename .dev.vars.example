@@ -1,0 +1,13 @@
+# Copy this file to .dev.vars and fill in real values for `wrangler dev` / preview
+DB_CONN_STRING=
+LINE_CHANNEL_ACCESS_TOKEN=
+LINE_CHANNEL_SECRET=
+LINE_LIFF_ID=
+NEXT_PUBLIC_LIFF_ID=
+LINE_LOGIN_CHANNEL_ID=
+NEXT_PUBLIC_APP_URL=
+
+# HR demo login
+HR_DEMO_USERNAME=hradmin
+HR_DEMO_PASSWORD=empvee2026
+HR_JWT_SECRET=change-me-to-a-long-random-string
