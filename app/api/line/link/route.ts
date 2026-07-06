@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { employees } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and, ne } from "drizzle-orm";
 import { serializeEmployee } from "@/lib/db/serializers";
 
 export async function POST(request: NextRequest) {
@@ -15,13 +15,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if this LINE account is already linked to a different employee.
     const existing = await db.query.employees.findFirst({
       where: eq(employees.lineUserId, lineUserId),
     });
 
     if (existing && existing.id !== employeeId) {
       return NextResponse.json(
-        { error: "Line account already linked to another employee" },
+        { error: "บัญชี LINE นี้ผูกกับพนักงานคนอื่นแล้ว" },
         { status: 409 }
       );
     }
@@ -33,12 +34,20 @@ export async function POST(request: NextRequest) {
       .returning();
 
     if (!updated) {
-      return NextResponse.json({ error: "Employee not found" }, { status: 404 });
+      return NextResponse.json({ error: "ไม่พบพนักงาน" }, { status: 404 });
     }
 
     return NextResponse.json({ success: true, employee: serializeEmployee(updated) });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Link error:", error);
-    return NextResponse.json({ error: "Failed to link account" }, { status: 500 });
+    const message = error?.message || "Failed to link account";
+    // Surface common DB errors without leaking internals.
+    if (message.includes("unique")) {
+      return NextResponse.json(
+        { error: "บัญชี LINE นี้ถูกใช้งานแล้ว" },
+        { status: 409 }
+      );
+    }
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

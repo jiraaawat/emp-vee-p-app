@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLiff } from "../liff-provider";
 import { LiffPageLayout } from "../components/liff-page-layout";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { useEmployees } from "@/hooks/use-employees";
 import { UserCircle, Search, Check, ChevronDown, AlertCircle } from "lucide-react";
 
 export default function LiffLinkPage() {
+  const router = useRouter();
   const { profile, ready, error: liffError, liff } = useLiff();
   const { data: employees = [], isLoading } = useEmployees();
   const [employeeId, setEmployeeId] = useState<string | null>(null);
@@ -98,6 +100,14 @@ export default function LiffLinkPage() {
     );
   }
 
+  useEffect(() => {
+    if (!linked) return;
+    const timer = setTimeout(() => {
+      router.replace("/liff");
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [linked, router]);
+
   if (linked) {
     return (
       <div className="min-h-screen p-6 bg-background">
@@ -107,7 +117,7 @@ export default function LiffLinkPage() {
           </div>
           <p className="text-secondary font-medium text-lg">ผูกบัญชีสำเร็จ!</p>
           <p className="text-sm text-on-surface-variant mt-2">
-            คุณสามารถใช้งานเมนูต่างๆ ผ่าน Rich Menu ได้แล้ว
+            กำลังพากลับไปหน้าเมนู...
           </p>
         </div>
       </div>
@@ -212,7 +222,7 @@ export default function LiffLinkPage() {
 
         <Button
           onClick={handleLink}
-          disabled={!employeeId || loading}
+          disabled={!employeeId || !profile?.userId || loading}
           className="w-full h-12 bg-gradient-to-b from-primary to-primary-container text-on-primary text-lg font-semibold hover:shadow-[0_0_20px_rgba(208,188,255,0.4)]"
         >
           {loading ? "กำลังผูกบัญชี..." : "ผูกบัญชี"}
