@@ -1,14 +1,20 @@
 "use client";
 
 import { useLiff } from "../liff-provider";
+import { LiffPageLayout } from "../components/liff-page-layout";
+import { LiffNotLinked } from "../components/liff-not-linked";
 import { StatusBadge } from "@/components/status-badge";
 import { useOtRequests } from "@/hooks/use-ot-requests";
 import { useExpenseRequests } from "@/hooks/use-expense-requests";
 import { useLeaveRequests } from "@/hooks/use-leave-requests";
 import { useEmployeeByLineUserId } from "@/hooks/use-employees";
-import { BarChart3, UserCircle } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { BarChart3, FileText, Wallet, Umbrella } from "lucide-react";
+
+const typeMeta = {
+  OT: { icon: FileText, color: "text-primary", bg: "bg-primary/10" },
+  เบิกเงิน: { icon: Wallet, color: "text-tertiary", bg: "bg-tertiary/10" },
+  ลา: { icon: Umbrella, color: "text-secondary", bg: "bg-secondary/10" },
+};
 
 export default function LiffStatusPage() {
   const { profile, ready } = useLiff();
@@ -22,19 +28,7 @@ export default function LiffStatusPage() {
   }
 
   if (!employee) {
-    return (
-      <div className="min-h-screen p-6 flex items-center justify-center">
-        <div className="max-w-md mx-auto text-center space-y-4">
-          <UserCircle className="w-12 h-12 text-on-surface-variant mx-auto" />
-          <p className="text-on-surface-variant">บัญชี LINE นี้ยังไม่ได้ผูกกับพนักงาน</p>
-          <Link href="/liff/link">
-            <Button className="w-full h-12 bg-gradient-to-b from-primary to-primary-container text-on-primary text-lg font-semibold">
-              ผูกบัญชีพนักงาน
-            </Button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <LiffNotLinked />;
   }
 
   const employeeId = employee.id;
@@ -46,35 +40,42 @@ export default function LiffStatusPage() {
   ].sort((a, b) => new Date(b.requestedAt).getTime() - new Date(a.requestedAt).getTime());
 
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-md mx-auto">
-        <div className="text-center mb-6">
-          <BarChart3 className="w-10 h-10 text-primary mx-auto mb-2" />
-          <h1 className="font-heading text-2xl font-bold text-primary">สถานะคำขอ</h1>
-          <p className="text-sm text-on-surface-variant">{employee.fullName}</p>
-        </div>
-
-        <div className="space-y-3">
-          {allRequests.length === 0 ? (
-            <p className="text-center text-on-surface-variant py-8">ไม่มีคำขอ</p>
-          ) : (
-            allRequests.map((req) => (
+    <LiffPageLayout
+      title="สถานะคำขอ"
+      subtitle={employee.fullName}
+      icon={BarChart3}
+      iconColor="text-primary"
+      iconBg="bg-primary/10"
+    >
+      <div className="space-y-3">
+        {allRequests.length === 0 ? (
+          <p className="text-center text-on-surface-variant py-8">ไม่มีคำขอ</p>
+        ) : (
+          allRequests.map((req) => {
+            const meta = typeMeta[req.type];
+            const Icon = meta.icon;
+            return (
               <div
                 key={req.id}
-                className="bento-card p-4 flex items-center justify-between"
+                className="flex items-center justify-between p-4 rounded-xl bg-surface-container/50 border border-white/5 hover:border-white/10 transition-colors"
               >
-                <div>
-                  <p className="text-sm font-medium text-on-surface">{req.label}</p>
-                  <p className="text-xs text-on-surface-variant">
-                    {new Date(req.requestedAt).toLocaleDateString("th-TH")}
-                  </p>
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className={`p-2 rounded-lg ${meta.bg}`}>
+                    <Icon className={`w-4 h-4 ${meta.color}`} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-on-surface truncate">{req.label}</p>
+                    <p className="text-xs text-on-surface-variant">
+                      {new Date(req.requestedAt).toLocaleDateString("th-TH")}
+                    </p>
+                  </div>
                 </div>
                 <StatusBadge status={req.status} />
               </div>
-            ))
-          )}
-        </div>
+            );
+          })
+        )}
       </div>
-    </div>
+    </LiffPageLayout>
   );
 }

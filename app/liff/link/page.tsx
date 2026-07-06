@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLiff } from "../liff-provider";
+import { LiffPageLayout } from "../components/liff-page-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEmployees } from "@/hooks/use-employees";
@@ -99,7 +100,7 @@ export default function LiffLinkPage() {
 
   if (linked) {
     return (
-      <div className="min-h-screen p-6">
+      <div className="min-h-screen p-6 bg-background">
         <div className="max-w-md mx-auto bento-card p-6 text-center mt-20">
           <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
             <Check className="w-6 h-6 text-primary" />
@@ -114,111 +115,109 @@ export default function LiffLinkPage() {
   }
 
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-md mx-auto">
-        <div className="text-center mb-6">
-          <UserCircle className="w-10 h-10 text-on-surface-variant mx-auto mb-2" />
-          <h1 className="font-heading text-2xl font-bold text-primary">ผูกบัญชี</h1>
-          <p className="text-sm text-on-surface-variant">{profile.displayName}</p>
-        </div>
-
-        <div className="bento-card p-6 space-y-4">
-          <div>
-            <p className="text-sm text-on-surface-variant mb-2">ค้นหาและเลือกพนักงานของคุณ</p>
-            <div className="relative" ref={containerRef}>
-              <div
-                className="flex items-center gap-2 bg-surface-container border border-border rounded-lg px-3 py-2 cursor-text"
-                onClick={() => setOpen(true)}
-              >
-                <Search className="w-4 h-4 text-on-surface-variant shrink-0" />
-                {selected ? (
-                  <div className="flex-1 min-w-0 text-left">
-                    <p className="text-sm font-medium text-on-surface truncate">{selected.fullName}</p>
-                    <p className="text-xs text-on-surface-variant truncate">
-                      รหัส {selected.employeeCode} · {selected.department}
-                    </p>
-                  </div>
-                ) : (
-                  <Input
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="พิมพ์ชื่อหรือรหัสพนักงาน"
-                    className="border-0 bg-transparent p-0 shadow-none focus-visible:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant"
-                    onFocus={() => setOpen(true)}
-                  />
-                )}
-                <ChevronDown className="w-4 h-4 text-on-surface-variant shrink-0" />
-              </div>
-
-              {open && (
-                <div className="absolute z-50 mt-1 w-full bg-surface-container-high border border-border rounded-lg shadow-lg max-h-72 overflow-auto">
-                  {!selected && (
-                    <div className="p-2 border-b border-border">
-                      <Input
-                        autoFocus
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="พิมพ์ชื่อหรือรหัสพนักงาน"
-                        className="bg-surface-container border-border text-sm"
-                      />
-                    </div>
-                  )}
-                  {isLoading ? (
-                    <div className="p-4 text-center text-sm text-on-surface-variant">กำลังโหลด...</div>
-                  ) : filtered.length === 0 ? (
-                    <div className="p-4 text-center text-sm text-on-surface-variant">ไม่พบพนักงาน</div>
-                  ) : (
-                    <ul className="py-1">
-                      {filtered.map((e) => (
-                        <li
-                          key={e.id}
-                          className="px-3 py-2 hover:bg-primary/10 cursor-pointer flex items-center justify-between"
-                          onClick={() => {
-                            setEmployeeId(e.id);
-                            setQuery("");
-                            setOpen(false);
-                          }}
-                        >
-                          <div className="min-w-0">
-                            <p className="text-sm font-medium text-on-surface truncate">{e.fullName}</p>
-                            <p className="text-xs text-on-surface-variant truncate">
-                              รหัส {e.employeeCode} · {e.department}
-                            </p>
-                          </div>
-                          {employeeId === e.id && <Check className="w-4 h-4 text-primary shrink-0 ml-2" />}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+    <LiffPageLayout
+      title="ผูกบัญชี"
+      subtitle={profile.displayName}
+      icon={UserCircle}
+      iconColor="text-primary"
+      iconBg="bg-primary/10"
+    >
+      <div className="space-y-4">
+        <div>
+          <p className="text-sm text-on-surface-variant mb-2">ค้นหาและเลือกพนักงานของคุณ</p>
+          <div className="relative" ref={containerRef}>
+            <div
+              className="flex items-center gap-2 bg-surface-container border border-border rounded-lg px-3 py-2 cursor-text"
+              onClick={() => setOpen(true)}
+            >
+              <Search className="w-4 h-4 text-on-surface-variant shrink-0" />
+              {selected ? (
+                <div className="flex-1 min-w-0 text-left">
+                  <p className="text-sm font-medium text-on-surface truncate">{selected.fullName}</p>
+                  <p className="text-xs text-on-surface-variant truncate">
+                    รหัส {selected.employeeCode} · {selected.department}
+                  </p>
                 </div>
+              ) : (
+                <Input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="พิมพ์ชื่อหรือรหัสพนักงาน"
+                  className="border-0 bg-transparent p-0 shadow-none focus-visible:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant"
+                  onFocus={() => setOpen(true)}
+                />
               )}
+              <ChevronDown className="w-4 h-4 text-on-surface-variant shrink-0" />
             </div>
+
+            {open && (
+              <div className="absolute z-50 mt-1 w-full bg-surface-container-high border border-border rounded-lg shadow-lg max-h-72 overflow-auto">
+                {!selected && (
+                  <div className="p-2 border-b border-border">
+                    <Input
+                      autoFocus
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="พิมพ์ชื่อหรือรหัสพนักงาน"
+                      className="bg-surface-container border-border text-sm"
+                    />
+                  </div>
+                )}
+                {isLoading ? (
+                  <div className="p-4 text-center text-sm text-on-surface-variant">กำลังโหลด...</div>
+                ) : filtered.length === 0 ? (
+                  <div className="p-4 text-center text-sm text-on-surface-variant">ไม่พบพนักงาน</div>
+                ) : (
+                  <ul className="py-1">
+                    {filtered.map((e) => (
+                      <li
+                        key={e.id}
+                        className="px-3 py-2 hover:bg-primary/10 cursor-pointer flex items-center justify-between"
+                        onClick={() => {
+                          setEmployeeId(e.id);
+                          setQuery("");
+                          setOpen(false);
+                        }}
+                      >
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium text-on-surface truncate">{e.fullName}</p>
+                          <p className="text-xs text-on-surface-variant truncate">
+                            รหัส {e.employeeCode} · {e.department}
+                          </p>
+                        </div>
+                        {employeeId === e.id && <Check className="w-4 h-4 text-primary shrink-0 ml-2" />}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
           </div>
-
-          {selected && (
-            <div className="bg-surface-container-low rounded-lg p-3 text-sm">
-              <span className="text-on-surface-variant">พนักงานที่เลือก:</span>{" "}
-              <span className="font-medium text-on-surface">{selected.fullName}</span>
-              <span className="text-on-surface-variant"> (รหัส {selected.employeeCode})</span>
-            </div>
-          )}
-
-          {error && (
-            <div className="flex items-start gap-2 text-destructive text-sm">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{error}</span>
-            </div>
-          )}
-
-          <Button
-            onClick={handleLink}
-            disabled={!employeeId || loading}
-            className="w-full h-12 bg-gradient-to-b from-primary to-primary-container text-on-primary text-lg font-semibold"
-          >
-            {loading ? "กำลังผูกบัญชี..." : "ผูกบัญชี"}
-          </Button>
         </div>
+
+        {selected && (
+          <div className="bg-surface-container-low rounded-lg p-3 text-sm">
+            <span className="text-on-surface-variant">พนักงานที่เลือก:</span>{" "}
+            <span className="font-medium text-on-surface">{selected.fullName}</span>
+            <span className="text-on-surface-variant"> (รหัส {selected.employeeCode})</span>
+          </div>
+        )}
+
+        {error && (
+          <div className="flex items-start gap-2 text-destructive text-sm">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        <Button
+          onClick={handleLink}
+          disabled={!employeeId || loading}
+          className="w-full h-12 bg-gradient-to-b from-primary to-primary-container text-on-primary text-lg font-semibold hover:shadow-[0_0_20px_rgba(208,188,255,0.4)]"
+        >
+          {loading ? "กำลังผูกบัญชี..." : "ผูกบัญชี"}
+        </Button>
       </div>
-    </div>
+    </LiffPageLayout>
   );
 }
