@@ -82,11 +82,11 @@ export async function setRichMenuImage(richMenuId: string, imageBuffer: ArrayBuf
 }
 
 export async function setDefaultRichMenu(richMenuId: string) {
-  return lineFetch(`/richmenu/${richMenuId}/setDefault`, { method: "POST" });
+  return lineFetch(`/user/all/richmenu/${richMenuId}`, { method: "POST" });
 }
 
 export async function cancelDefaultRichMenu() {
-  return lineFetch("/richmenu/all/setDefault", { method: "POST", body: {} });
+  return lineFetch("/user/all/richmenu", { method: "DELETE" });
 }
 
 export async function deleteRichMenu(richMenuId: string) {
