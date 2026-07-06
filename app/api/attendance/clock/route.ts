@@ -6,7 +6,7 @@ import { serializeAttendance } from "@/lib/db/serializers";
 
 export async function POST(request: NextRequest) {
   try {
-    const { employeeId, type } = await request.json();
+    const { employeeId, type, note } = await request.json();
 
     if (!employeeId || (type !== "in" && type !== "out")) {
       return NextResponse.json(
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" });
     const nowTime = new Date().toTimeString().slice(0, 5);
 
     let record = await db.query.attendance.findFirst({
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       }
       const [updated] = await db
         .update(attendance)
-        .set({ clockOutAt: nowTime })
+        .set({ clockOutAt: nowTime, note: note || null })
         .where(eq(attendance.id, record.id))
         .returning();
       record = updated;

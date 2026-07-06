@@ -14,6 +14,7 @@ import {
   X,
   LogOut,
   Briefcase,
+  MessageSquare,
 } from "lucide-react";
 
 const navItems = [
@@ -22,6 +23,7 @@ const navItems = [
   { href: "/attendance", label: "เข้า-ออก", icon: Clock },
   { href: "/requests", label: "คำขอ", icon: FileText },
   { href: "/approvals", label: "อนุมัติ", icon: CheckSquare },
+  { href: "/tickets", label: "แจ้งปัญหา", icon: MessageSquare },
   { href: "/reports", label: "รายงาน", icon: BarChart3 },
 ];
 

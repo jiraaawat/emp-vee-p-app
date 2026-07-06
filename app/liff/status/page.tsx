@@ -3,6 +3,7 @@
 import { useLiff } from "../liff-provider";
 import { LiffPageLayout } from "../components/liff-page-layout";
 import { LiffNotLinked } from "../components/liff-not-linked";
+import { LiffLoading } from "../components/liff-loading";
 import { StatusBadge } from "@/components/status-badge";
 import { useOtRequests } from "@/hooks/use-ot-requests";
 import { useExpenseRequests } from "@/hooks/use-expense-requests";
@@ -18,13 +19,17 @@ const typeMeta = {
 
 export default function LiffStatusPage() {
   const { profile, ready } = useLiff();
-  const { data: employee } = useEmployeeByLineUserId(profile?.userId);
+  const { data: employee, isLoading: employeeLoading } = useEmployeeByLineUserId(profile?.userId);
   const { data: otRequests = [] } = useOtRequests();
   const { data: expenses = [] } = useExpenseRequests();
   const { data: leaves = [] } = useLeaveRequests();
 
-  if (!ready) {
-    return <div className="min-h-screen flex items-center justify-center text-on-surface-variant">กำลังโหลด...</div>;
+  if (!ready || !profile?.userId) {
+    return <LiffLoading />;
+  }
+
+  if (employeeLoading) {
+    return <LiffLoading />;
   }
 
   if (!employee) {

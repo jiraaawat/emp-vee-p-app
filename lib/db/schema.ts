@@ -107,8 +107,24 @@ export const leaveRequests = pgTable("leave_requests", {
   requestedAt: timestamp("requested_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+export const tickets = pgTable("tickets", {
+  id: varchar("id", { length: 36 })
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  lineUserId: varchar("line_user_id", { length: 100 }).notNull(),
+  lineDisplayName: varchar("line_display_name", { length: 255 }),
+  correctEmployeeCode: varchar("correct_employee_code", { length: 20 }),
+  correctFullName: varchar("correct_full_name", { length: 255 }),
+  reason: varchar("reason", { length: 50 }),
+  note: text("note"),
+  status: varchar("status", { length: 20 }).notNull().default("open"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export type Employee = typeof employees.$inferSelect;
 export type NewEmployee = typeof employees.$inferInsert;
+export type Ticket = typeof tickets.$inferSelect;
+export type NewTicket = typeof tickets.$inferInsert;
 export type Attendance = typeof attendance.$inferSelect;
 export type NewAttendance = typeof attendance.$inferInsert;
 export type OtRequest = typeof otRequests.$inferSelect;

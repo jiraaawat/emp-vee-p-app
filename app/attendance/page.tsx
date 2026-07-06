@@ -49,7 +49,7 @@ export default function AttendancePage() {
   const employeeMap = new Map(employees.map((e) => [e.id, e.fullName]));
   const columns = getColumns(employeeMap);
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" });
   const todayRecords = attendance.filter((a) => a.workDate === today);
   const presentCount = todayRecords.filter((a) => a.status === "present").length;
   const absentCount = todayRecords.filter((a) => a.status === "absent").length;
@@ -82,7 +82,7 @@ export default function AttendancePage() {
             Clock In
           </Button>
           <Button
-            onClick={() => clockOut.mutate("1")}
+            onClick={() => clockOut.mutate({ employeeId: "1" })}
             disabled={clockOut.isPending}
             variant="outline"
             className="w-full border-border text-on-surface hover:bg-surface-container-high"
