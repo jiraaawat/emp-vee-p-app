@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useLiff } from "./liff-provider";
 import { BentoCard } from "@/components/bento-card";
-import { Clock, FileText, Wallet, Umbrella, BarChart3, UserCircle } from "lucide-react";
+import { Clock, FileText, Wallet, Umbrella, BarChart3, UserCircle, MessageSquare } from "lucide-react";
+import { LiffLoading } from "./components/liff-loading";
 
 const menuItems = [
   { href: "/liff/clock", label: "เข้า-ออกงาน", icon: Clock, color: "text-secondary", bg: "bg-secondary/10", border: "border-secondary/20" },
@@ -11,6 +12,7 @@ const menuItems = [
   { href: "/liff/expense", label: "เบิกเงิน", icon: Wallet, color: "text-tertiary", bg: "bg-tertiary/10", border: "border-tertiary/20" },
   { href: "/liff/leave", label: "แจ้งลา", icon: Umbrella, color: "text-secondary", bg: "bg-secondary/10", border: "border-secondary/20" },
   { href: "/liff/status", label: "สถานะคำขอ", icon: BarChart3, color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
+  { href: "/liff/ticket", label: "แจ้งปัญหา", icon: MessageSquare, color: "text-tertiary", bg: "bg-tertiary/10", border: "border-tertiary/20" },
   { href: "/liff/link", label: "ผูกบัญชี", icon: UserCircle, color: "text-on-surface-variant", bg: "bg-surface-container", border: "border-white/10" },
 ];
 
@@ -18,11 +20,7 @@ export default function LiffMenuPage() {
   const { profile, ready, error } = useLiff();
 
   if (!ready) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-on-surface-variant">
-        กำลังโหลด...
-      </div>
-    );
+    return <LiffLoading />;
   }
 
   return (

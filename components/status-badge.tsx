@@ -15,6 +15,8 @@ const statusMap: Record<string, { label: string; classes: string }> = {
   pending: { label: "Pending", classes: "bg-tertiary/10 text-tertiary border-tertiary/20" },
   approved: { label: "Approved", classes: "bg-secondary/10 text-secondary border-secondary/20" },
   rejected: { label: "Rejected", classes: "bg-error/10 text-error border-error/20" },
+  open: { label: "Open", classes: "bg-tertiary/10 text-tertiary border-tertiary/20" },
+  resolved: { label: "Resolved", classes: "bg-secondary/10 text-secondary border-secondary/20" },
 };
 
 export function StatusBadge({ status, className }: StatusBadgeProps) {

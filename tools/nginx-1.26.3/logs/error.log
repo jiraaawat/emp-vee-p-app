@@ -1,0 +1,135 @@
+2026/07/06 15:33:30 [notice] 195244#183440: signal process started
+2026/07/06 15:35:27 [info] 195576#195300: *1 client 127.0.0.1 closed keepalive connection (10054: An existing connection was forcibly closed by the remote host)
+2026/07/06 15:35:38 [info] 195576#195300: *3 client 127.0.0.1 closed keepalive connection (10054: An existing connection was forcibly closed by the remote host)
+2026/07/06 16:08:28 [info] 195576#195300: *26 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *27 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *48 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *35 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *36 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *66 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *46 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *59 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *37 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *62 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *56 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *42 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *57 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *60 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *43 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:28 [info] 195576#195300: *34 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:29 [info] 195576#195300: *23 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:29 [info] 195576#195300: *44 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:29 [info] 195576#195300: *41 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:29 [error] 195576#195300: *70 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=KHYyQ9O528H2dTwvTVZvc HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=KHYyQ9O528H2dTwvTVZvc", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:08:36 [info] 195576#195300: *77 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *85 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [warn] 195576#195300: *83 an upstream response is buffered to a temporary file D:\fork\khunart\emp-vee-p-demo\tools\nginx-1.26.3/temp/proxy_temp/1/00/0000000001 while reading upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_090k2jm.js.map HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_090k2jm.js.map", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:08:36 [info] 195576#195300: *78 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *90 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *96 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *98 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *82 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *92 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:36 [info] 195576#195300: *94 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:37 [info] 195576#195300: *81 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:37 [info] 195576#195300: *87 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:37 [info] 195576#195300: *83 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:08:52 [info] 195576#195300: *70 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *108 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *112 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *114 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *115 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *139 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *137 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *119 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *129 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *141 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *147 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *145 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *116 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *131 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *122 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *123 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *143 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *135 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *150 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *133 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *151 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *125 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:12 [info] 195576#195300: *127 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:11:13 [error] 195576#195300: *157 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:12:27 [error] 195576#195300: *159 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om HTTP/1.1", upstream: "http://[::1]:3000/_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:13:45 [error] 195576#195300: *161 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:15:01 [error] 195576#195300: *166 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om HTTP/1.1", upstream: "http://[::1]:3000/_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:16:17 [error] 195576#195300: *171 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=lWWJq3r78f6LHTRCY44Om", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:16:55 [info] 195576#195300: *178 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *184 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *188 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *189 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *181 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *185 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *182 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *180 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *190 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *183 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *187 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *207 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *194 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *205 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *203 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *201 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *211 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *213 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [info] 195576#195300: *209 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:16:55 [error] 195576#195300: *219 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=xHQunozmk7c1wvDeXg9i9 HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=xHQunozmk7c1wvDeXg9i9", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:17:07 [info] 195576#195300: *226 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *225 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *224 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *230 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *236 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *247 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *248 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *262 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *233 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *246 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *231 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *235 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *245 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *240 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *242 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *243 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *244 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *249 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *241 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *237 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *239 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *250 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [info] 195576#195300: *238 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:08 [error] 195576#195300: *273 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=5r0ccre7XxNr-xjJi0DBf HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=5r0ccre7XxNr-xjJi0DBf", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:17:28 [info] 195576#195300: *273 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:28 [info] 195576#195300: *219 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *282 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *287 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *289 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *284 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *285 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *286 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *295 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *298 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *296 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *301 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *303 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *305 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *310 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *294 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *302 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *314 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *313 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *315 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *311 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *322 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *320 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *323 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [info] 195576#195300: *321 client 127.0.0.1 closed keepalive connection
+2026/07/06 16:17:35 [error] 195576#195300: *331 upstream sent no valid HTTP/1.0 header while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /_next/webpack-hmr?id=1pGae8cj3mxHeyKluVUhk HTTP/1.1", upstream: "http://127.0.0.1:3000/_next/webpack-hmr?id=1pGae8cj3mxHeyKluVUhk", host: "ac7a-2405-9800-b661-24ee-5826-84ae-9ee3-25e0.ngrok-free.app"
+2026/07/06 16:17:42 [info] 195576#195300: *331 client 127.0.0.1 closed keepalive connection

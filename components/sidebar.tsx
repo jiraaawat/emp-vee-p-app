@@ -12,6 +12,7 @@ import {
   BarChart3,
   LogOut,
   Briefcase,
+  MessageSquare,
 } from "lucide-react";
 
 const navItems = [
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/attendance", label: "เข้า-ออกงาน", icon: Clock },
   { href: "/requests", label: "ส่งคำขอ", icon: FileText },
   { href: "/approvals", label: "อนุมัติ", icon: CheckSquare },
+  { href: "/tickets", label: "แจ้งปัญหา", icon: MessageSquare },
   { href: "/reports", label: "รายงาน", icon: BarChart3 },
 ];
 

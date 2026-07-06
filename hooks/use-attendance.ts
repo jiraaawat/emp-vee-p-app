@@ -22,7 +22,7 @@ export function useClockIn() {
 export function useClockOut() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: clockOut,
+    mutationFn: ({ employeeId, note }: { employeeId: string; note?: string }) => clockOut(employeeId, note),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.attendance });
     },

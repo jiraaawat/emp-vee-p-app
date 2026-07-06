@@ -83,10 +83,10 @@ export async function clockIn(employeeId: string): Promise<Attendance> {
   });
 }
 
-export async function clockOut(employeeId: string): Promise<Attendance> {
+export async function clockOut(employeeId: string, note?: string): Promise<Attendance> {
   return fetchJson<Attendance>("/api/attendance/clock", {
     method: "POST",
-    body: JSON.stringify({ employeeId, type: "out" }),
+    body: JSON.stringify({ employeeId, type: "out", note }),
   });
 }
 

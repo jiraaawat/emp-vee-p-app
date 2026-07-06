@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useLiff } from "../liff-provider";
 import { LiffPageLayout } from "../components/liff-page-layout";
 import { LiffNotLinked } from "../components/liff-not-linked";
+import { LiffLoading } from "../components/liff-loading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,7 +21,7 @@ import { Wallet } from "lucide-react";
 
 export default function LiffExpensePage() {
   const { profile, ready } = useLiff();
-  const { data: employee } = useEmployeeByLineUserId(profile?.userId);
+  const { data: employee, isLoading: employeeLoading } = useEmployeeByLineUserId(profile?.userId);
   const create = useCreateExpenseRequest();
   const [form, setForm] = useState({
     employeeId: "",
@@ -37,8 +38,12 @@ export default function LiffExpensePage() {
     }
   }, [employee]);
 
-  if (!ready) {
-    return <div className="min-h-screen flex items-center justify-center text-on-surface-variant">กำลังโหลด...</div>;
+  if (!ready || !profile?.userId) {
+    return <LiffLoading />;
+  }
+
+  if (employeeLoading) {
+    return <LiffLoading />;
   }
 
   if (!employee) {

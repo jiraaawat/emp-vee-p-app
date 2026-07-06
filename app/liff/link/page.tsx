@@ -26,16 +26,21 @@ export default function LiffLinkPage() {
     [employeeId, employees]
   );
 
+  const availableEmployees = useMemo(
+    () => employees.filter((e) => !e.lineUserId),
+    [employees]
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return employees;
-    return employees.filter(
+    if (!q) return availableEmployees;
+    return availableEmployees.filter(
       (e) =>
         e.fullName.toLowerCase().includes(q) ||
         e.employeeCode.toLowerCase().includes(q) ||
         e.department.toLowerCase().includes(q)
     );
-  }, [query, employees]);
+  }, [query, availableEmployees]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
