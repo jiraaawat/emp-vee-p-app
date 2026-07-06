@@ -6,6 +6,7 @@ import { spawnSync } from "node:child_process";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const devVarsPath = path.join(root, ".dev.vars");
+const wranglerPath = path.join(root, "wrangler.jsonc");
 const secretsJsonPath = path.join(root, ".wrangler", "secrets.json");
 
 if (!fs.existsSync(devVarsPath)) {
@@ -13,7 +14,22 @@ if (!fs.existsSync(devVarsPath)) {
   process.exit(1);
 }
 
-const vars: Record<string, string> = {};
+// Load plain-text vars already defined in wrangler.jsonc so we don't try to
+// upload them as secrets (Cloudflare rejects duplicate binding names).
+const skipKeys = new Set<string>();
+if (fs.existsSync(wranglerPath)) {
+  try {
+    const raw = fs.readFileSync(wranglerPath, "utf-8");
+    const config = JSON.parse(raw);
+    if (config.vars && typeof config.vars === "object") {
+      for (const key of Object.keys(config.vars)) skipKeys.add(key);
+    }
+  } catch (err) {
+    console.warn("Could not parse wrangler.jsonc, proceeding without skip list:", err);
+  }
+}
+
+const secrets: Record<string, string> = {};
 const lines = fs.readFileSync(devVarsPath, "utf-8").split(/\r?\n/);
 
 for (const line of lines) {
@@ -23,11 +39,21 @@ for (const line of lines) {
   if (eq === -1) continue;
   const key = trimmed.slice(0, eq).trim();
   const value = trimmed.slice(eq + 1).trim();
-  if (key) vars[key] = value;
+  if (!key) continue;
+  if (skipKeys.has(key)) {
+    console.log(`Skipping "${key}" (already defined as a plain var in wrangler.jsonc)`);
+    continue;
+  }
+  secrets[key] = value;
+}
+
+if (Object.keys(secrets).length === 0) {
+  console.log("No secrets to upload. All keys are already configured as plain vars.");
+  process.exit(0);
 }
 
 fs.mkdirSync(path.dirname(secretsJsonPath), { recursive: true });
-fs.writeFileSync(secretsJsonPath, JSON.stringify(vars, null, 2));
+fs.writeFileSync(secretsJsonPath, JSON.stringify(secrets, null, 2));
 
 console.log("Uploading secrets to Cloudflare Worker...");
 const result = spawnSync(

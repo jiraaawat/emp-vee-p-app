@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import {
   createRichMenu,
   setRichMenuImage,
@@ -26,8 +27,9 @@ export async function POST(request: NextRequest) {
 
     const { richMenuId } = await createRichMenu(richMenuObject);
 
+    const { env } = await getCloudflareContext({ async: true });
     const imageUrl = new URL("/richmenu/richmenu.png", request.url);
-    const imageRes = await fetch(imageUrl);
+    const imageRes = await (env.ASSETS as unknown as { fetch: typeof fetch }).fetch(imageUrl);
     if (!imageRes.ok) {
       throw new Error(`Failed to load rich menu image: ${imageRes.status}`);
     }
