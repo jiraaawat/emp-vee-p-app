@@ -30,14 +30,7 @@ export default function ApprovalsPage() {
 
   return (
     <LayoutWrapper>
-      <header className="mb-8">
-        <h1 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">
-          อนุมัติคำขอ
-        </h1>
-        <p className="text-on-surface-variant">ตรวจสอบและอนุมัติ OT, เบิกเงิน, ลา</p>
-      </header>
-
-      <div className="grid grid-cols-3 gap-4 mb-6">
+<div className="grid grid-cols-3 gap-4 mb-6">
         <BentoCard>
           <p className="text-xs text-on-surface-variant uppercase tracking-wider mb-1">OT รออนุมัติ</p>
           <p className="font-heading text-2xl font-bold text-tertiary">{pendingOt.length}</p>
